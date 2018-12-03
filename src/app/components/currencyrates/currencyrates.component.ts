@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InsharedService } from '../../services/inshared.service';
 
 @Component({
   selector: 'app-currencyrates',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currencyrates.component.css']
 })
 export class CurrencyratesComponent implements OnInit {
+  curDetail:  any;
 
-  constructor() { }
+  constructor(private currencyService: InsharedService) { }
 
   ngOnInit() {
+  }
+
+  SearchCurrency(formData) {
+    this.currencyService.getCurrenceyService(formData.searchstring)
+      .subscribe(result => {
+        this.curDetail = result;
+      })
   }
 
 }

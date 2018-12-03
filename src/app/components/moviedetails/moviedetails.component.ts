@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InsharedService } from '../../services/inshared.service';
 
 @Component({
   selector: 'app-moviedetails',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./moviedetails.component.css']
 })
 export class MoviedetailsComponent implements OnInit {
+  movieDetail: any;
 
-  constructor() { }
+  constructor(private movieService: InsharedService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  SearchMovie(formData) {
+    this.movieService.getMovieService(formData.searchstring)
+      .subscribe(result => {
+        this.movieDetail = result;
+      })
   }
-
 }

@@ -11,6 +11,7 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { MoviedetailsComponent } from './components/moviedetails/moviedetails.component';
 import { CurrencyratesComponent } from './components/currencyrates/currencyrates.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { InsharedService } from './services/inshared.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { MenuComponent } from './components/menu/menu.component';
       { path: 'currency', component: CurrencyratesComponent }
     ])
   ],
-  providers: [],
+  providers: [InsharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
