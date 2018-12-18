@@ -17,7 +17,7 @@ export class CurrencyratesComponent implements OnInit {
   SearchCurrency(formData) {
     this.currencyService.getCurrenceyService(formData.searchstring)
       .subscribe(result => {
-        this.curDetail = result;
+        this.curDetail = result.rates;
       })
   }
 

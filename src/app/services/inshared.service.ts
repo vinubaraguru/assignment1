@@ -25,11 +25,14 @@ export class InsharedService {
     })
   }
 
-  getWeatherService(cityName): Observable<any> {
+  getWeatherService(cityName, satateNmae): Observable<any> {
     return Observable.create(observer => {
       let headers = new Headers();
+      let weatherURL1 = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
+      let weatherURL2 = "%2C%20";
+      let weatherURL3 = "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
       // headers.append('Content-Type', 'application/json');
-      this.http.get('https://query.yahooapis.com/v1/public/yql?q='+ cityName +'&format=json',
+      this.http.get(weatherURL1 + cityName + weatherURL2 + satateNmae + weatherURL3,
         {
           // headers: headers
         })
@@ -47,7 +50,7 @@ export class InsharedService {
     return Observable.create(observer => {
       let headers = new Headers();
       // headers.append('Content-Type', 'application/json');
-      this.http.get('http://api.fixer.io/latest?base='+cur,
+      this.http.get('http://data.fixer.io/api/2000-01-03?access_key=8904d6a54c7fddd87b7b81e31ee361d7&symbols='+cur,
         {
           // headers: headers
         })
