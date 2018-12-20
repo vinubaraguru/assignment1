@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class InsharedService {
-
+  totReqsMade: number = 0;
   constructor(private http: Http) { }
 
   getMovieService(movieName): Observable<any> {
+    this.totReqsMade = this.totReqsMade + 1;
     return Observable.create(observer => {
       let headers = new Headers();
       // headers.append('Content-Type', 'application/json');
@@ -26,6 +27,7 @@ export class InsharedService {
   }
 
   getWeatherService(cityName, satateNmae): Observable<any> {
+    this.totReqsMade = this.totReqsMade + 1;
     return Observable.create(observer => {
       let headers = new Headers();
       let weatherURL1 = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
@@ -47,6 +49,7 @@ export class InsharedService {
   }
 
   getCurrenceyService(cur): Observable<any> {
+    this.totReqsMade = this.totReqsMade + 1;
     return Observable.create(observer => {
       let headers = new Headers();
       // headers.append('Content-Type', 'application/json');

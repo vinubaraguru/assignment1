@@ -11,11 +11,9 @@
 
 <div *ngIf="curDetail" class="card-body">
   <p class="well lead">Exchange rate relative to Euro in a JSON format: : {{ curDetail | json }} </p>
-  <!-- <h6>Title: {{movieDetail.Title}}</h6>
-  <h6>Actors: {{movieDetail.Actors}}</h6>
-  <h6>Awards: {{movieDetail.Awards}}</h6>
-  <h6>Contry: {{movieDetail.Country}}</h6>
-  <h6>Director: {{movieDetail.Director}}</h6>
-  <h6>ImdbRating: {{movieDetail.imdbRating}}</h6>
-  <h6>Released On: {{movieDetail.Released}}</h6> -->
+</div>
+<div>
+  <p class="text-info">Total # of all the service requests including Weather, Movie, and Currency is :
+    <span class="badge">{{this.currencyService.totReqsMade}}</span>
+  </p>
 </div>
